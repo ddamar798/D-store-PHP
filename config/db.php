@@ -3,9 +3,9 @@
 
 // Setting koneksi database
 $host     = "localhost";
-$user     = "root";         // default di Laragon/XAMPP
-$password = "";             // kosong kalau tidak ada password
-$database = "dstore";       // nama database yang tadi Anda import
+$user     = "root";         
+$password = "";            
+$database = "dstore";      
 
 // Membuat koneksi
 $db = mysqli_connect($host, $user, $password, $database);
