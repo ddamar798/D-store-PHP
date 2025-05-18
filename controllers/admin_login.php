@@ -2,39 +2,24 @@
 session_start();
 include_once '../config/db.php';
 
-// Ambil data dari form login
-$username = $_POST['username'];
+$username = mysqli_real_escape_string($db, $_POST['username']);
 $password = $_POST['password'];
 
-// Query ke tabel admin
-$sql = "SELECT * FROM admins WHERE username = ?";
-$stmt = mysqli_prepare($db, $sql);
-mysqli_stmt_bind_param($stmt, "s", $username);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
+$query = "SELECT * FROM admin WHERE username = '$username'";
+$result = mysqli_query($db, $query);
 
-// Cek hasil query
-if ($user = mysqli_fetch_assoc($result)) {
-    
-    // Cek password
-    if (password_verify($password, $user['password'])) {
-        
-        // Simpan sesi admin
-        $_SESSION['admin'] = $user['username'];
-        
-        // Arahkan ke dashboard
+if (mysqli_num_rows($result) === 1) {
+    $data = mysqli_fetch_assoc($result);
+
+    // COCOKKAN password dengan password_verify()
+    if (password_verify($password, $data['password'])) {
+        $_SESSION['admin'] = $data['id'];
         header("Location: ../admin/dashboard.php");
         exit;
-        
     } else {
-        // Password salah
-        header("Location: ../admin/login.php?error=Password salah!");
-        exit;
+        echo "Password anda salah!";
     }
-
 } else {
-    // Username tidak ditemukan
-    header("Location: ../admin/login.php?error=Username tidak ditemukan!");
-    exit;
+    echo "Username tidak ditemukan!";
 }
 ?>
