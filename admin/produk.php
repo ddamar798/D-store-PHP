@@ -23,6 +23,9 @@ $result = mysqli_query($db, $sql);
 
     <div class="max-w-5xl mx-auto bg-white rounded-xl shadow-md p-6">
 
+    <a href="edit_produk.php?id=<?= $row['id']; ?>" class="text-blue-600 hover:underline">Edit</a>
+
+
         <h2 class="text-2xl font-bold mb-6 text-center">
             Daftar Produk Sepatu 👟
         </h2>
