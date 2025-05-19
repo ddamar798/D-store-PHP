@@ -7,7 +7,7 @@ include_once '../config/db.php';
 $kategori = mysqli_query($db, "SELECT * FROM kategori");
 
 // Ambil brand
-$brands = mysqli_query($db, "SELECT * FROM brands");
+$brands = mysqli_query($db, "SELECT * FROM brand");
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +43,7 @@ $brands = mysqli_query($db, "SELECT * FROM brands");
                 <select name="kategori_id" required class="w-full border px-3 py-2 rounded-lg">
                     <option value="">-- Pilih Kategori --</option>
                     <?php while ($k = mysqli_fetch_assoc($kategori)) : ?>
-                        <option value="<?= $k['id']; ?>"><?= htmlspecialchars($k['nama_kategori']); ?></option>
+                        <option value="<?= $k['id']; ?>"><?= htmlspecialchars($k['nama']); ?></option>
                     <?php endwhile; ?>
                 </select>
             </div>
@@ -53,7 +53,7 @@ $brands = mysqli_query($db, "SELECT * FROM brands");
                 <select name="brand_id" required class="w-full border px-3 py-2 rounded-lg">
                     <option value="">-- Pilih Brand --</option>
                     <?php while ($b = mysqli_fetch_assoc($brands)) : ?>
-                        <option value="<?= $b['id']; ?>"><?= htmlspecialchars($b['nama_brand']); ?></option>
+                        <option value="<?= $b['id']; ?>"><?= htmlspecialchars($b['nama']); ?></option>
                     <?php endwhile; ?>
                 </select>
             </div>
