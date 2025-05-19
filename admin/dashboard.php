@@ -15,7 +15,7 @@ include_once '../includes/auth_admin.php'; // Cek login admin
     <div class="w-full max-w-4xl bg-white shadow-lg rounded-2xl p-8">
         
         <h1 class="text-3xl font-semibold text-gray-800 text-center mb-8 border-b pb-4">
-            Dashboard Admin Dstore
+            Dashboard Admin D`store
         </h1>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
