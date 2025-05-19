@@ -16,6 +16,7 @@ $brands = mysqli_query($db, "SELECT * FROM brands");
     <meta charset="UTF-8">
     <title>Tambah Produk - Admin</title>
     <link href="../assets/css/style.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 min-h-screen p-6">
 
