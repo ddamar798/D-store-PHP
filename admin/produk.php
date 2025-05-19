@@ -18,6 +18,7 @@ $result = mysqli_query($db, $sql);
     <meta charset="UTF-8">
     <title>Kelola Produk - Admin</title>
     <link href="../assets/css/style.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 min-h-screen p-6">
 
