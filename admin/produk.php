@@ -24,7 +24,7 @@ $result = mysqli_query($db, $sql);
 
     <div class="max-w-5xl mx-auto bg-white rounded-xl shadow-md p-6">
 
-    <a href="edit_produk.php?id=<?= $row['id']; ?>" class="text-blue-600 hover:underline">Edit</a>
+    
 
 
         <h2 class="text-2xl font-bold mb-6 text-center">
@@ -32,13 +32,21 @@ $result = mysqli_query($db, $sql);
         </h2>
 
         <div class="text-right mb-4">
-            <a href="tambah_produk.php" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg">
-                + Tambah Produk
-            </a>
+            <a href="tambah_produk.php"
+       class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg">
+        + Tambah Produk
+    </a>
 
-            <a href="../controllers/hapus_produk.php?id=<?= $row['id']; ?>"
-   onclick="return confirm('Yakin ingin menghapus produk ini?')"
-   class="text-red-600 hover:underline ml-3">Hapus Produk</a>
+    <a href="edit_produk.php?id=<?= $row['id']; ?>"
+       class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded-lg">
+        ✎ Edit Produk
+    </a>
+
+    <a href="../controllers/hapus_produk.php?id=<?= $row['id']; ?>"
+       onclick="return confirm('Yakin ingin menghapus produk ini?')"
+       class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg">
+        🗑️ Hapus Produk
+    </a>
 
         </div>
 
