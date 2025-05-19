@@ -13,6 +13,7 @@
     <meta charset="UTF-8">
     <title>Login Admin - Dstore</title>
     <link href="../assets/css/style.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="flex items-center justify-center h-screen bg-gray-100">
     <div class="w-full max-w-sm p-6 bg-white rounded-xl shadow-md">
