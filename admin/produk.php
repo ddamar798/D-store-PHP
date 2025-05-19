@@ -34,6 +34,11 @@ $result = mysqli_query($db, $sql);
             <a href="tambah_produk.php" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg">
                 + Tambah Produk
             </a>
+
+            <a href="../controllers/hapus_produk.php?id=<?= $row['id']; ?>"
+   onclick="return confirm('Yakin ingin menghapus produk ini?')"
+   class="text-red-600 hover:underline ml-3">Hapus Produk</a>
+
         </div>
 
         <div class="overflow-x-auto">
