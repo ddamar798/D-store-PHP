@@ -31,8 +31,9 @@ $result = mysqli_query($db, $sql);
             Daftar Produk Sepatu 👟
         </h2>
 
-        <div class="text-right mb-4">
-            <a href="tambah_produk.php"
+<!-- Tombol-tombol dengan jarak -->
+<div class="flex flex-wrap gap-2 mt-4 mb-4">
+    <a href="tambah_produk.php"
        class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg">
         + Tambah Produk
     </a>
@@ -47,8 +48,8 @@ $result = mysqli_query($db, $sql);
        class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg">
         🗑️ Hapus Produk
     </a>
+</div>
 
-        </div>
 
         <div class="overflow-x-auto">
             <table class="w-full table-auto border border-gray-300 text-sm">
