@@ -20,6 +20,14 @@ $kategori = mysqli_query($db, "SELECT * FROM kategori ORDER BY id DESC");
         + Tambah Kategori
     </a>
 
+    <td class="p-2">
+    <a href="edit_kategori.php?id=<?= $row['id']; ?>" class="bg-yellow-500 hover:bg-yellow-600 text-white py-1 px-3 rounded mr-2">Edit</a>
+    <a href="../controllers/hapus_kategori.php?id=<?= $row['id']; ?>"
+       onclick="return confirm('Yakin ingin menghapus kategori ini?')"
+       class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">Hapus</a>
+</td>
+
+
     <table class="w-full bg-white rounded-lg shadow p-4">
         <thead>
             <tr class="bg-gray-200">
