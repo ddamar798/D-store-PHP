@@ -18,18 +18,33 @@ $result = mysqli_query($db, $query);
 <head>
     <meta charset="UTF-8">
     <title>Beranda - Dstore</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Produk Dstore</h1>
-    <div class="produk-list">
+<body class="bg-gray-100 text-gray-800">
+    <!-- Navbar -->
+    <nav class="bg-blue-700 p-4 flex items-center justify-between text-white">
+        <div class="flex items-center gap-3">
+            <img src="../assets/img/LOgo.png" alt="Logo" class="h-10 w-10 rounded-full">
+            <h1 class="text-xl font-bold">Dstore</h1>
+        </div>
+    </nav>
+
+    <!-- Judul -->
+    <div class="max-w-6xl mx-auto px-4 py-6 text-center">
+        <h2 class="text-2xl font-bold">Produk Sepatu Terbaru</h2>
+    </div>
+
+    <!-- Daftar Produk -->
+    <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 pb-10">
         <?php while($row = mysqli_fetch_assoc($result)): ?>
-            <div class="produk-item">
-                <img src="../assets/img/<?= htmlspecialchars($row['gambar']) ?>" alt="<?= htmlspecialchars($row['nama_produk']) ?>" width="150">
-                <h3><?= htmlspecialchars($row['nama_produk']) ?></h3>
-                <p>Brand: <?= htmlspecialchars($row['nama_brand']) ?></p>
-                <p>Kategori: <?= htmlspecialchars($row['nama_kategori']) ?></p>
-                <p>Harga: Rp<?= number_format($row['harga'], 0, ',', '.') ?></p>
+            <div class="bg-white shadow-md rounded-xl overflow-hidden transform transition duration-300 hover:-translate-y-1">
+                <img src="../assets/img/<?= htmlspecialchars($row['gambar']) ?>" alt="<?= htmlspecialchars($row['nama_produk']) ?>" class="w-full h-52 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-bold mb-1"><?= htmlspecialchars($row['nama_produk']) ?></h3>
+                    <p class="text-sm text-gray-500 mb-1">Brand: <?= htmlspecialchars($row['nama_brand']) ?></p>
+                    <p class="text-sm text-gray-500 mb-1">Kategori: <?= htmlspecialchars($row['nama_kategori']) ?></p>
+                    <p class="text-blue-600 font-semibold">Rp<?= number_format($row['harga'], 0, ',', '.') ?></p>
+                </div>
             </div>
         <?php endwhile; ?>
     </div>
