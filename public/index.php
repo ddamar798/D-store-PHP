@@ -31,7 +31,7 @@ $result = mysqli_query($db, $query);
 
     <!-- Judul -->
     <div class="max-w-6xl mx-auto px-4 py-6 text-center">
-        <h2 class="text-2xl font-bold">Produk Sepatu Terbaru</h2>
+        <h2 class="text-2xl font-bold">Sepatu Terkece Sedunia 100% Orii</h2>
     </div>
 
     <!-- Daftar Produk -->
