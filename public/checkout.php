@@ -1,79 +1,55 @@
 <?php
-include_once '../config/koneksi.php';
-
-if (!isset($_GET['id'])) {
-    echo "Produk tidak ditemukan.";
-    exit;
-}
+include '../includes/koneksi.php';
 
 $id = $_GET['id'];
-$sql = "SELECT * FROM produk WHERE id = $id";
-$result = mysqli_query($db, $sql);
-$data = mysqli_fetch_assoc($result);
-
-if (!$data) {
-    echo "Produk tidak ditemukan.";
-    exit;
-}
+$produk = mysqli_query($koneksi, "SELECT * FROM produk WHERE id = $id");
+$data = mysqli_fetch_assoc($produk);
 ?>
 
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Checkout - <?= $data['nama']; ?> | Dstore</title>
+    <title>Checkout Produk</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-100 p-6">
+    <div class="max-w-lg mx-auto bg-white p-6 rounded-xl shadow-md">
+        <h2 class="text-2xl font-bold mb-4 text-center">Checkout Produk</h2>
 
-    <!-- Navbar -->
-    <nav class="bg-blue-600 text-white shadow">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center gap-3">
-            <img src="../assets/img/LOgo.png" alt="Logo Dstore" class="w-10 h-10 rounded-full">
-            <h1 class="text-xl font-bold">Dstore</h1>
-        </div>
-    </nav>
-
-    <div class="max-w-2xl mx-auto p-6 mt-6 bg-white rounded-xl shadow-md">
-
-        <!-- Ringkasan Produk -->
-        <div class="flex items-center gap-4 mb-6">
-            <img src="../assets/img/produk/<?= $data['gambar']; ?>" alt="<?= $data['nama']; ?>" class="w-20 h-20 rounded-md object-cover">
-            <div>
-                <h2 class="text-xl font-bold"><?= $data['nama']; ?></h2>
-                <p class="text-blue-600 font-semibold">Rp <?= number_format($data['harga'], 0, ',', '.'); ?></p>
-            </div>
-        </div>
-
-        <!-- Form Pemesanan -->
-        <form action="../controllers/proses_checkout.php" method="POST" class="space-y-4">
+        <form action="../controllers/proses_checkout.php" method="POST">
             <input type="hidden" name="produk_id" value="<?= $data['id']; ?>">
+            <input type="hidden" name="total_harga" value="<?= $data['harga']; ?>">
 
-            <div>
-                <label class="block font-semibold">Nama Lengkap</label>
-                <input type="text" name="nama" required class="w-full border rounded-lg px-3 py-2">
+            <div class="mb-4">
+                <label class="block font-medium">Nama</label>
+                <input type="text" name="nama" required class="w-full border p-2 rounded-lg">
             </div>
 
-            <div>
-                <label class="block font-semibold">No. HP</label>
-                <input type="text" name="no_hp" required class="w-full border rounded-lg px-3 py-2">
+            <div class="mb-4">
+                <label class="block font-medium">Email</label>
+                <input type="email" name="email" required class="w-full border p-2 rounded-lg">
             </div>
 
-            <div>
-                <label class="block font-semibold">Alamat Lengkap</label>
-                <textarea name="alamat" rows="3" required class="w-full border rounded-lg px-3 py-2"></textarea>
+            <div class="mb-4">
+                <label class="block font-medium">No. HP</label>
+                <input type="text" name="no_hp" required class="w-full border p-2 rounded-lg">
             </div>
 
-            <div>
-                <label class="block font-semibold">Catatan Tambahan (Opsional)</label>
-                <input type="text" name="catatan" class="w-full border rounded-lg px-3 py-2">
+            <div class="mb-4">
+                <label class="block font-medium">Alamat</label>
+                <textarea name="alamat" required class="w-full border p-2 rounded-lg"></textarea>
             </div>
 
-            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold">
-                Pesan Sekarang
+            <div class="mb-4">
+                <label class="block font-medium">Jumlah</label>
+                <input type="number" name="qty" value="1" min="1" required class="w-full border p-2 rounded-lg">
+            </div>
+
+            <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg">
+                Bayar Sekarang
             </button>
         </form>
     </div>
-
 </body>
 </html>
