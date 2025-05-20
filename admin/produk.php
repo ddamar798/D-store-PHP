@@ -4,10 +4,10 @@ include_once '../includes/auth_admin.php';
 include_once '../config/db.php';
 
 // Ambil semua produk dari database
-$sql = "SELECT produk.*, brands.nama_brand, kategori.nama_kategori 
-        FROM produk 
-        LEFT JOIN brands ON produk.brand_id = brands.id 
-        LEFT JOIN kategori ON produk.kategori_id = kategori.id";
+$sql = "SELECT produk.*, kategori.nama AS kategori_nama, brands.nama AS brand_nama
+        FROM produk
+        JOIN kategori ON produk.kategori_id = kategori.id
+        JOIN brands ON produk.brand_id = brands.id";
 
 $result = mysqli_query($db, $sql);
 ?>
@@ -73,8 +73,8 @@ $result = mysqli_query($db, $sql);
                         <tr class="text-center">
                             <td class="border px-2 py-1"><?= $no++; ?></td>
                             <td class="border px-2 py-1"><?= htmlspecialchars($row['nama_produk']); ?></td>
-                            <td class="border px-2 py-1"><?= htmlspecialchars($row['nama_brand']); ?></td>
-                            <td class="border px-2 py-1"><?= htmlspecialchars($row['nama_kategori']); ?></td>
+                            <td class="border px-2 py-1"><?= htmlspecialchars($row['brand_nama']); ?></td>
+                            <td class="border px-2 py-1"><?= htmlspecialchars($row['kategori_nama']); ?></td>
                             <td class="border px-2 py-1">Rp<?= number_format($row['harga']); ?></td>
                             <td class="border px-2 py-1">
                                 <a href="#" class="text-blue-600 hover:underline">Edit</a> |
