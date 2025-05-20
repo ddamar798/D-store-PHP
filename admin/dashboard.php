@@ -20,21 +20,36 @@ include_once '../includes/auth_admin.php'; // Cek login admin
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
 
-            <a href="produk.php" class="bg-gray-100 hover:bg-gray-200 transition text-center p-6 rounded-xl shadow text-gray-700 font-medium">
-                Kelola Produk
-            </a>
+           <div class="grid grid-cols-2 gap-4 mb-6">
+    <a href="produk.php" class="block bg-blue-500 hover:bg-blue-600 text-white text-center py-3 rounded-lg">
+        Kelola Produk
+    </a>
+    <a href="tambah_produk.php" class="block bg-blue-500 hover:bg-blue-600 text-white text-center py-3 rounded-lg">
+        Tambah Produk
+    </a>
 
-            <a href="brand.php" class="bg-gray-100 hover:bg-gray-200 transition text-center p-6 rounded-xl shadow text-gray-700 font-medium">
-                Kelola Brand
-            </a>
+    <a href="kategori.php" class="block bg-yellow-500 hover:bg-yellow-600 text-white text-center py-3 rounded-lg">
+        Kelola Kategori
+    </a>
+    <a href="tambah_kategori.php" class="block bg-yellow-500 hover:bg-yellow-600 text-white text-center py-3 rounded-lg">
+        Tambah Kategori
+    </a>
 
-            <a href="kategori.php" class="bg-gray-100 hover:bg-gray-200 transition text-center p-6 rounded-xl shadow text-gray-700 font-medium">
-                Kelola Kategori
-            </a>
+    <a href="brand.php" class="block bg-green-500 hover:bg-green-600 text-white text-center py-3 rounded-lg">
+        Kelola Brand
+    </a>
+    <a href="tambah_brand.php" class="block bg-green-500 hover:bg-green-600 text-white text-center py-3 rounded-lg">
+        Tambah Brand
+    </a>
 
-            <a href="promo.php" class="bg-gray-100 hover:bg-gray-200 transition text-center p-6 rounded-xl shadow text-gray-700 font-medium">
-                Kelola Promo
-            </a>
+    <a href="promo.php" class="block bg-purple-500 hover:bg-purple-600 text-white text-center py-3 rounded-lg">
+        Kelola Promo
+    </a>
+    <a href="tambah_promo.php" class="block bg-purple-500 hover:bg-purple-600 text-white text-center py-3 rounded-lg">
+        Tambah Promo
+    </a>
+</div>
+
 
         </div>
 
