@@ -52,6 +52,11 @@ include_once '../includes/auth_admin.php'; // Cek login admin
                 Tambah Promo
             </a>
 
+            <a href="checkout.php" class="block bg-indigo-500 hover:bg-indigo-600 text-white text-center py-3 rounded-lg">
+                Data Checkout
+            </a>
+
+
         </div>
 
         <form action="../controllers/logout.php" method="POST" class="text-center mt-6">
