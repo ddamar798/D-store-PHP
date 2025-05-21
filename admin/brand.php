@@ -3,7 +3,7 @@ session_start();
 include_once '../includes/auth_admin.php';
 include_once '../config/db.php';
 
-$brands = mysqli_query($db, "SELECT * FROM brand ORDER BY id DESC");
+$brands = mysqli_query($db, "SELECT * FROM brands ORDER BY id DESC");
 ?>
 
 <!DOCTYPE html>
