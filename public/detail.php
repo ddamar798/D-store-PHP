@@ -6,17 +6,22 @@ if (!isset($_GET['id'])) {
     exit;
 }
 
-$id = $_GET['id'];
-$sql = "SELECT produk.*, brand.nama AS nama_brand, kategori.nama AS nama_kategori 
-        FROM produk 
-        JOIN brand ON produk.brand_id = brand.id 
-        JOIN kategori ON produk.kategori_id = kategori.id 
-        WHERE produk.id = $id";
-$result = mysqli_query($db, $sql);
-$data = mysqli_fetch_assoc($result);
+$id = intval($_GET['id']);
+$query = "
+    SELECT produk.*, 
+           brands.nama AS nama_brand, 
+           kategori.nama AS nama_kategori 
+    FROM produk 
+    LEFT JOIN brands ON produk.brand_id = brands.id 
+    LEFT JOIN kategori ON produk.kategori_id = kategori.id 
+    WHERE produk.id = $id
+";
 
-if (!$data) {
-    echo "Produk tidak ditemukan.";
+$result = mysqli_query($db, $query);
+$produk = mysqli_fetch_assoc($result);
+
+if (!$produk) {
+    echo "Produk tidak tersedia.";
     exit;
 }
 ?>
@@ -25,41 +30,34 @@ if (!$data) {
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title><?= $data['nama']; ?> - Dstore</title>
+    <title><?= htmlspecialchars($produk['nama_produk']) ?> - Dstore</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-800">
-
-    <!-- Navbar -->
-    <nav class="bg-blue-600 text-white shadow">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center gap-3">
-            <img src="../assets/img/LOgo.png" alt="Logo Dstore" class="w-10 h-10 rounded-full">
+<body class="bg-gray-100 text-gray-800">
+    <nav class="bg-blue-700 text-white p-4">
+        <div class="max-w-6xl mx-auto flex items-center gap-3">
+            <img src="../assets/img/LOgo.png" class="w-10 h-10 rounded-full" alt="Logo">
             <h1 class="text-xl font-bold">Dstore</h1>
         </div>
     </nav>
 
-    <!-- Detail Produk -->
-    <div class="max-w-6xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-        
-        <!-- Gambar Produk -->
-        <img src="../assets/img/produk/<?= $data['gambar']; ?>" alt="<?= $data['nama']; ?>" 
-             class="w-full h-80 object-cover rounded-xl shadow-md">
+    <main class="max-w-4xl mx-auto bg-white shadow-md rounded-xl p-6 mt-6">
+        <div class="grid md:grid-cols-2 gap-6">
+            <img src="../assets/img/<?= htmlspecialchars($produk['gambar']) ?>" alt="<?= htmlspecialchars($produk['nama_produk']) ?>" class="w-full h-auto rounded-lg shadow">
 
-        <!-- Info Produk -->
-        <div class="space-y-4">
-            <h2 class="text-2xl font-bold"><?= $data['nama']; ?></h2>
-            <p class="text-gray-500">Brand: <span class="font-medium"><?= $data['nama_brand']; ?></span></p>
-            <p class="text-gray-500">Kategori: <span class="font-medium"><?= $data['nama_kategori']; ?></span></p>
-            <p class="text-blue-600 font-bold text-xl">Rp <?= number_format($data['harga'], 0, ',', '.'); ?></p>
-            <p class="text-gray-700"><?= nl2br($data['deskripsi']); ?></p>
+            <div>
+                <h2 class="text-2xl font-bold mb-2"><?= htmlspecialchars($produk['nama_produk']) ?></h2>
+                <p class="text-gray-600 mb-1">Brand: <strong><?= htmlspecialchars($produk['nama_brand']) ?></strong></p>
+                <p class="text-gray-600 mb-1">Kategori: <strong><?= htmlspecialchars($produk['nama_kategori']) ?></strong></p>
+                <p class="text-blue-600 text-xl font-bold mt-2">Rp<?= number_format($produk['harga'], 0, ',', '.') ?></p>
 
-            <!-- Tombol Pesan -->
-            <a href="checkout.php?id=<?= $data['id']; ?>"
-               class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg mt-4">
-                Pesan Sekarang
-            </a>
+                <p class="mt-4 text-gray-700 leading-relaxed">Deskripsi produk belum tersedia.</p>
+
+                <a href="checkout.php?id=<?= $produk['id']; ?>" class="inline-block mt-6 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg">
+                    Pesan Sekarang
+                </a>
+            </div>
         </div>
-    </div>
-
+    </main>
 </body>
 </html>
