@@ -7,7 +7,7 @@ include_once '../config/db.php';
 $kategori = mysqli_query($db, "SELECT * FROM kategori");
 
 // Ambil brand
-$brands = mysqli_query($db, "SELECT * FROM brand");
+$brands = mysqli_query($db, "SELECT * FROM brands");
 ?>
 
 <!DOCTYPE html>
