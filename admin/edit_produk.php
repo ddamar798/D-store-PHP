@@ -7,13 +7,13 @@ include_once '../config/db.php';
 $id = (int) $_GET['id'];
 
 // Ambil data produk berdasarkan ID
-$query = "SELECT * FROM produk WHERE id = $id";
-$result = mysqli_query($db, $query);
-$produk = mysqli_fetch_assoc($result);
+$query = "SELECT * FROM produk WHERE id = $id"; 
+$result = mysqli_query($db, $query); 
+$produk = mysqli_fetch_assoc($result); 
 
 // Ambil semua kategori & brand
-$kategori = mysqli_query($db, "SELECT * FROM kategori");
-$brands = mysqli_query($db, "SELECT * FROM brands");
+$kategori = mysqli_query($db, "SELECT * FROM kategori"); 
+$brands = mysqli_query($db, "SELECT * FROM brands"); 
 ?>
 
 <!DOCTYPE html>
